@@ -1,6 +1,6 @@
 # SearXNG Railway
 
-A pre-configured SearXNG template for Railway, optimized for LLM and programmatic use.
+A pre-configured SearXNG template for Railway, optimized for LLM tool use.
 
 ## Features
 
