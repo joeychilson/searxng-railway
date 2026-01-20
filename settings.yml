@@ -1,8 +1,5 @@
 use_default_settings: true
 
-valkey:
-  url: "${SEARXNG_REDIS_URL}"
-
 general:
   instance_name: "searxng"
 
