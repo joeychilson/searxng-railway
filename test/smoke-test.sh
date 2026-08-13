@@ -47,12 +47,19 @@ python3 - "$TMP/config.json" <<'EOF'
 import json, sys
 
 config = json.load(open(sys.argv[1]))
-engines = {e["name"]: e["enabled"] for e in config["engines"]}
+expected = {
+    "duckduckgo", "brave", "startpage", "qwant", "mojeek", "wikipedia",
+    "wikidata", "currency", "github", "gitlab", "stackoverflow", "mdn",
+    "hackernews", "arch linux wiki", "npm", "pypi", "crates.io",
+    "pkg.go.dev", "docker hub", "arxiv", "semantic scholar", "crossref",
+    "pubmed",
+}
+enabled = {e["name"] for e in config["engines"] if e["enabled"]}
 
-for name in ("brave", "duckduckgo", "github", "arxiv", "pypi"):
-    assert engines.get(name), f"expected engine enabled: {name}"
-for name in ("google", "bing"):
-    assert not engines.get(name, False), f"expected engine disabled: {name}"
+missing = expected - enabled
+unexpected = enabled - expected
+assert not missing, f"expected engines not enabled: {sorted(missing)}"
+assert not unexpected, f"unexpected engines enabled: {sorted(unexpected)}"
 EOF
 
 echo "==> JSON search API answers a plain GET"
