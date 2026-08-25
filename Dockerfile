@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1
+# syntax=docker/dockerfile:1.7
 
 # SearXNG for Railway, preconfigured for LLM / agent tool use (JSON API).
 #
@@ -13,7 +13,7 @@ COPY --chown=977:977 settings.yml /etc/searxng/settings.yml
 
 EXPOSE 8080
 
-# Railway ignores Docker HEALTHCHECKs (railway.json's healthcheckPath covers
-# that); this one is for docker/podman/compose users.
+# Railway templates configure their own healthcheck path. This image-level
+# check is for other container runtimes.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
     CMD wget --quiet --tries=1 --spider http://localhost:8080/healthz || exit 1

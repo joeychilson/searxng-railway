@@ -1,6 +1,6 @@
 # SearXNG on Railway
 
-[![CI](https://github.com/joeychilson/railway-searxng/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/joeychilson/railway-searxng/actions/workflows/docker-publish.yml)
+[![CI](https://github.com/joeychilson/railway-searxng/actions/workflows/ci.yml/badge.svg)](https://github.com/joeychilson/railway-searxng/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/joeychilson/railway-searxng)](https://github.com/joeychilson/railway-searxng/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -109,7 +109,8 @@ so reviewed upstream updates can arrive through Railway image auto-updates.
 
 Routine upstream updates use patch releases. Changes to template behavior,
 variables, engines, or settings use a minor or major release so they do not
-reach existing deployments automatically.
+reach existing deployments automatically. The wrapper version is independent
+from SearXNG; see [RELEASING.md](RELEASING.md) for the release policy.
 
 ## Development
 

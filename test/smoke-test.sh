@@ -6,10 +6,10 @@
 # get CAPTCHA'd by upstream engines, so we only require a well-formed
 # response. CI runs this before any image is published.
 #
-# Usage: ./test/smoke-test.sh <image>
+# Usage: ./test/smoke-test.sh [image]
 set -euo pipefail
 
-IMAGE="${1:?usage: smoke-test.sh <image>}"
+IMAGE="${1:-railway-searxng:test}"
 NAME="searxng-smoke-$$"
 PORT="${SMOKE_PORT:-18080}"
 BASE="http://localhost:$PORT"
